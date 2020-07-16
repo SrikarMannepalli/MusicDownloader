@@ -9,7 +9,7 @@ from terminaltables import AsciiTable
 def give_options(video_data):
     ''' get the video_id of the video user needs downloaded '''
     tabledata = [['S No.', 'Track Title', 'Track length']]
-    content = video_data["contentents"]["twoColumnSearchResultsRenderer"]["primaryContents"][
+    content = video_data["contents"]["twoColumnSearchResultsRenderer"]["primaryContents"][
         "sectionListRenderer"]["contents"][0]["itemSectionRenderer"]["contents"]
 
     ids = []
@@ -29,16 +29,6 @@ def give_options(video_data):
     return ids[idx]
 
 
-# artist= ""
-# song = "needa padadani"
-# Scraping YouTube for the song link
-# query = None
-# if artist == "":
-#     query = song
-# elif song == "":
-#     query = artist
-# else:
-# query = artist+"+"+song
 query = input("Which song do you want to download?: ")
 page = requests.get("https://www.youtube.com/results?search_query=" + query)
 soup = BeautifulSoup(page.text, 'html.parser')
