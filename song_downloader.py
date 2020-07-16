@@ -19,7 +19,7 @@ def give_options(video_data):
             length = content[i]["videoRenderer"]["lengthText"]["simpleText"]
             video_id = content[i]["videoRenderer"]["videoId"]
             ids.append(video_id)
-            tabledata.append([str(i), title, length])
+            tabledata.append([len(ids)-1, title, length])
         except BaseException:
             pass
     table = AsciiTable(tabledata)
