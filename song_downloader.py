@@ -32,7 +32,7 @@ def give_options(data):
 # artist= ""
 # song = "needa padadani"
 # Scraping YouTube for the song link
-query = None
+# query = None
 # if artist == "":
 #     query = song
 # elif song == "":
