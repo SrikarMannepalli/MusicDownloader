@@ -9,12 +9,20 @@ from terminaltables import AsciiTable
 def give_options(video_data):
     ''' get the video_id of the video user needs downloaded '''
     tabledata = [['S No.', 'Track Title', 'Track length']]
+    content_check = video_data["contents"]["twoColumnSearchResultsRenderer"]["primaryContents"][
+        "sectionListRenderer"]["contents"][0]
+    ind = 0
+    if 'promotedSparklesTextSearchRenderer' in str(content_check):
+        ind = 1
+    # print(video_data["contents"]["twoColumnSearchResultsRenderer"]["primaryContents"]["sectionListRenderer"]["contents"][1])
     content = video_data["contents"]["twoColumnSearchResultsRenderer"]["primaryContents"][
-        "sectionListRenderer"]["contents"][0]["itemSectionRenderer"]["contents"]
+        "sectionListRenderer"]["contents"][ind]["itemSectionRenderer"]["contents"]
 
     ids = []
+    # print(video_data["contents"]["twoColumnSearchResultsRenderer"]["primaryContents"]["sectionListRenderer"]["contents"][0])
     for i in range(0, min(len(content), 10)):
         try:
+        # print(i)
             title = content[i]["videoRenderer"]["title"]["runs"][0]["text"]
             length = content[i]["videoRenderer"]["lengthText"]["simpleText"]
             video_id = content[i]["videoRenderer"]["videoId"]
