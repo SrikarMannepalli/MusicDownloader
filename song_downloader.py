@@ -6,18 +6,18 @@ from bs4 import BeautifulSoup
 from terminaltables import AsciiTable
 
 
-def give_options(data):
+def give_options(video_data):
     ''' get the video_id of the video user needs downloaded '''
     tabledata = [['S No.', 'Track Title', 'Track length']]
-    cont = data["contents"]["twoColumnSearchResultsRenderer"]["primaryContents"][
+    content = video_data["contentents"]["twoColumnSearchResultsRenderer"]["primaryContents"][
         "sectionListRenderer"]["contents"][0]["itemSectionRenderer"]["contents"]
-    # print(len(cont))
+
     ids = []
-    for i in range(0, min(len(cont), 10)):
+    for i in range(0, min(len(content), 10)):
         try:
-            title = cont[i]["videoRenderer"]["title"]["runs"][0]["text"]
-            length = cont[i]["videoRenderer"]["lengthText"]["simpleText"]
-            video_id = cont[i]["videoRenderer"]["videoId"]
+            title = content[i]["videoRenderer"]["title"]["runs"][0]["text"]
+            length = content[i]["videoRenderer"]["lengthText"]["simpleText"]
+            video_id = content[i]["videoRenderer"]["videoId"]
             ids.append(video_id)
             tabledata.append([str(i), title, length])
         except BaseException:
