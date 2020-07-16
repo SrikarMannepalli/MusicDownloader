@@ -1,0 +1,7 @@
+python3 -m pip install json
+python3 -m pip install requests
+python3 -m pip install beautifulsoup4
+python3 -m pip install terminaltables
+python3 -m pip install youtube-dl==2020.06.16.1
+
+
